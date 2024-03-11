@@ -8,33 +8,28 @@ public class LongestNaturalSubstrings {
 
             if (numbers[i] == 0) {
 
-                int k = 0;
+                int length = 1;
 
-                for (int j = i; j < numbers.length - 1; j++) {
+                while (i + length < numbers.length && numbers[i + length] == numbers[i] + length) {
 
-                    if (numbers[j + 1] == numbers[j] + 1)
-                        k++;
-
-                    else
-                        break;
+                    length++;
                 }
 
-                int[] substring = new int[k + 1];
+                int[] substring = new int[length];
 
-                for (int j = 0; j <= k; j++) {
+                for (int j = 0; j < length; j++) {
 
                     substring[j] = numbers[i + j];
                 }
 
                 outputArray[i] = substring;
-                i += k + 1;
+                i += length;
 
             }
         }
 
         return outputArray;
     }
-
 
 
 }

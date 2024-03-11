@@ -48,7 +48,6 @@ public class Hourglass {
 
     }
 
-
     private void drawEnd(int n){
 
         for (int i = 0; i < (2*n - 1); i++) {
