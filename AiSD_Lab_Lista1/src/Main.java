@@ -29,7 +29,7 @@ public class Main {
 
         for (int i = 0; i < outputArray.length; i++) {
 
-            if(outputArray[i] != null) {
+            if (outputArray[i] != null) {
 
                 System.out.print(" { ");
 
