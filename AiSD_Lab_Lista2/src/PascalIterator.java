@@ -1,6 +1,7 @@
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+
 public class PascalIterator implements Iterator<Integer> {
     private final int N;
     private int row;
@@ -27,26 +28,24 @@ public class PascalIterator implements Iterator<Integer> {
     @Override
     public Integer next() throws NoSuchElementException {
 
-        if (hasNext())
-            return line.get(currentIndex++);
-        else
+        if (!hasNext())
             throw new NoSuchElementException();
 
-    }
+        return line.get(currentIndex++);
 
+    }
 
     private void generateLine() {
 
         ArrayList<Integer> nextLine = new ArrayList<>();
         row++;
+
         for (int i = 0; i < row; i++) {
 
-            if (i == 0 || i == row - 1){
+            if (i == 0 || i == row - 1)
                 nextLine.add(1);
-            }
-            else {
+            else
                 nextLine.add(line.get(i - 1) + line.get(i));
-            }
 
         }
 

@@ -17,11 +17,10 @@ public class TableIterator<E> implements Iterator<E> {
     @Override
     public E next() throws NoSuchElementException {
 
-        if (hasNext())
-            return table[pos++];
-        else
+        if (!hasNext())
             throw new NoSuchElementException();
 
+        return table[pos++];
     }
 
 

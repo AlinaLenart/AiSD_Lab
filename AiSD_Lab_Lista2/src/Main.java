@@ -50,7 +50,33 @@ public class Main {
             System.out.print(iter.next() + " ");
         }
 
+        int M = 7;
+        System.out.println("--Wiersz numer " + M + " w trojkacie Pascala--");
 
+        PascalIterator iter2 = new PascalIterator(M);
+        while (iter2.hasNext()){
+            System.out.print(iter2.next() + " ");
+        }
+
+        //modyfikacja
+
+        int m = 150;
+        System.out.println("\n--Dzielniki liczby "+ m + " to: ");
+
+        DivisorIterator divIter1 = new DivisorIterator(m);
+
+        while (divIter1.hasNext()) {
+            System.out.print(divIter1.next() + " ");
+        }
+
+        int o = 30;
+        System.out.println("\n--Dzielniki liczby "+ o + " to: ");
+
+        DivisorIterator divIter2 = new DivisorIterator(o);
+
+        while (divIter2.hasNext()) {
+            System.out.print(divIter2.next() + " ");
+        }
 
     }
 }
