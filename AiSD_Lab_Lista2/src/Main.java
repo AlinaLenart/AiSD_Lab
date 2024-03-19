@@ -42,8 +42,13 @@ public class Main {
 
         //zadanie 2
 
-        PascalIterator pi = new PascalIterator(2);
+        int N = 7;
+        System.out.println("--Wiersz numer " + N + " w trojkacie Pascala--");
 
+        PascalIterator iter = new PascalIterator(N);
+        while (iter.hasNext()){
+            System.out.print(iter.next() + " ");
+        }
 
 
 

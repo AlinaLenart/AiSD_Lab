@@ -1,9 +1,9 @@
 import java.util.Iterator;
 
-public class Table<E> implements Iterable<E>{
+public class Table<E> implements Iterable<E> {
     private E[] table;
 
-    public Table(E[] table){
+    public Table(E[] table) {
         this.table = table;
     }
 

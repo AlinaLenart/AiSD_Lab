@@ -6,7 +6,7 @@ public class TableIterator<E> implements Iterator<E> {
     private final E[] table;
     public TableIterator(E[] table){
         this.table = table;
-        pos = 0;
+        this.pos = 0;
     }
 
     @Override
@@ -24,8 +24,5 @@ public class TableIterator<E> implements Iterator<E> {
 
     }
 
-    public void remove() {
-        throw new UnsupportedOperationException();
-    }
 
 }

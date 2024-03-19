@@ -1,31 +1,37 @@
 import java.util.Iterator;
 import java.util.ArrayList;
-public class PascalIterator implements Iterator<Integer>{
+import java.util.NoSuchElementException;
+public class PascalIterator implements Iterator<Integer> {
     private final int N;
     private int row;
     private ArrayList<Integer> line;
+    private int currentIndex;
 
-    public PascalIterator(int N){
+    public PascalIterator(int N) {
         this.N = N;
+        this.currentIndex = 0;
         this.line = new ArrayList<>();
         line.add(1);
         this.row = line.size();
-        while (row < N){
+        while (row < N) {
             generateLine();
         }
-        for(int i : line){
-            System.out.println(i);
-        }
+
     }
 
     @Override
     public boolean hasNext() {
-        return false;
+        return currentIndex < N;
     }
 
     @Override
-    public Integer next() {
-        return null;
+    public Integer next() throws NoSuchElementException {
+
+        if (hasNext())
+            return line.get(currentIndex++);
+        else
+            throw new NoSuchElementException();
+
     }
 
 
@@ -43,11 +49,11 @@ public class PascalIterator implements Iterator<Integer>{
             }
 
         }
+
         line.clear();
         line.addAll(nextLine);
         nextLine.clear();
 
     }
-
 
 }
