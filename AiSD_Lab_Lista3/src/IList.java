@@ -1,6 +1,6 @@
 public interface IList<E> {
     public boolean add(E e); // dodanie elementu na koniec listy
-    public void add(int index, E element); // dodanie elementu na podanej pozycji
+    public boolean add(int index, E element); // dodanie elementu na podanej pozycji
     public void clear(); // skasowanie wszystkich elementów
     public boolean contains(E element); // czy lista zawiera podany element (equals())
     public E get(int index); // pobranie elementu z podanej pozycji
