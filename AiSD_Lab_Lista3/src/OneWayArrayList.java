@@ -4,6 +4,7 @@ public class OneWayArrayList<E> implements IList<E> {
     private Node<E> head;
 
     public OneWayArrayList(int M){
+
         this.M = M;
         this.head = null;
     }
@@ -15,24 +16,24 @@ public class OneWayArrayList<E> implements IList<E> {
             return true;
         }
 
-        Node<E> tail = head;
-        while (tail.getCounter() == M) {
+        Node<E> current = head;
+        while (current.getCounter() == M) {
 
-            if (tail.getNextNode() == null) {
+            if (current.getNextNode() == null) {
                 Node<E> newNode = new Node<>(M);
                 newNode.addToNode(element);
-                tail.setNextNode(newNode);
+                current.setNextNode(newNode);
                 return true;
             }
-            tail = tail.getNextNode();
+            current = current.getNextNode();
         }
-        tail.addToNode(element);
+        current.addToNode(element);
 
         return true;
     }
     public boolean add(int index, E element) {
 
-        if (index < 0 || index >= size()) {
+        if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException("Invalid index: " + index + " size of list: "+ size());
         }
 
@@ -41,7 +42,7 @@ public class OneWayArrayList<E> implements IList<E> {
             return true;
         }
 
-        for (int i = size(); i > index ; i--) {
+        for (int i = size(); i > index - 1; i--) {
             set(i, get(i - 1));
         }
 
@@ -52,63 +53,81 @@ public class OneWayArrayList<E> implements IList<E> {
         head = null;
     }
     public boolean contains(E element) {
+
         Node<E> current = head;
+
         while (current != null) {
+
             for (int i = 0; i < current.getCounter(); i++) {
+
                 if (element.equals(current.getElements()[i])) {
                     return true;
                 }
             }
+
             current = current.getNextNode();
         }
         return false;
     }
     public E get(int index) {
+
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException("Invalid index: " + index + " size of list: "+ size());
         }
 
         Node<E> current = head;
         int currentIndex = index;
+
         while (currentIndex >= current.getCounter()) {
+
             currentIndex -= current.getCounter();
             current = current.getNextNode();
         }
-        return current.getElements()[currentIndex];
+
+        return current.getFromArray(currentIndex);
     }
     public E set(int index, E element) {
-        if (index < 0 || index >= size()) {
+
+        if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException("Invalid index: " + index + " size of list: "+ size());
         }
+
         Node<E> current = head;
         int currentIndex = index;
 
-        while (currentIndex >= current.getCounter()) {
+        while (current.getNextNode() != null && currentIndex >= current.getCounter()) {
+
             currentIndex -= current.getCounter();
             current = current.getNextNode();
         }
+
         current.changeElement(element, currentIndex);
         return element;
     }
     public int indexOf(E element) {
+
         int index = 0;
         Node<E> current = head;
+
         while (current != null) {
+
             for (int i = 0; i < current.getCounter(); i++) {
-                if (element.equals(current.getElements()[i])) {
+
+                if (element.equals(current.getFromArray(i))) {
+
                     return index + i;
                 }
             }
+
             index += current.getCounter();
             current = current.getNextNode();
         }
-        return -1;
 
+        return -1;
     }
-    public boolean isEmpty() {
-        return size() == 0;
-    }
+    public boolean isEmpty() {return size() == 0;}
     public E remove(int index) {
+
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException("Invalid index: " + index + " size of list: "+ size());
         }
@@ -116,12 +135,14 @@ public class OneWayArrayList<E> implements IList<E> {
         E removedElement = get(index);
 
         for (int i = index; i < size() - 1 ; i++) {
+
             set(i, get(i + 1));
         }
 
         set(size() - 1, null);
 
         if (head.getCounter() == 0){
+
             head = null;
             return removedElement;
         }
@@ -129,42 +150,49 @@ public class OneWayArrayList<E> implements IList<E> {
         Node<E> current = head.getNextNode();
 
         while (current.getNextNode() != null) {
+
             if (current.getNextNode().getCounter() == 0){
+
                 current.setNextNode(null);
                 break;
             }
+
             current = current.getNextNode();
         }
+
         return removedElement;
     }
 
     public boolean remove(E element) {
+
         for (int i = 0; i < size(); i++){
+
             if (get(i) == element){
+
                 remove(i);
                 return true;
             }
         }
-        return false;
+        return false; //nie ma takiego elementu
     }
     public int size() {
+
         int pos = 0;
         Node<E> current = head;
-        while(current != null)
-        {
+
+        while(current != null) {
+
             pos += current.getCounter();
             current = current.getNextNode();
         }
-        return pos;
-    }
 
-    public int getM() {
-        return M;
+        return pos;
     }
 
     public Node<E> getHead() {
         return head;
     }
+
 }
 
 
