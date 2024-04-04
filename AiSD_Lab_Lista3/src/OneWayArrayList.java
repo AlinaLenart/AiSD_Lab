@@ -1,18 +1,28 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class OneWayArrayList<E> implements IList<E> {
     private final int M;
     private Node<E> head;
+    private int size;
+    private int currentIndex;
 
     public OneWayArrayList(int M){
 
         this.M = M;
         this.head = null;
+        this.size = 0;
+        this.currentIndex = 0;
     }
+
+
     public boolean add(E element) {
 
         if (head == null) {
             head = new Node<>(M);
             head.addToNode(element);
+            size++;
             return true;
         }
 
@@ -23,22 +33,25 @@ public class OneWayArrayList<E> implements IList<E> {
                 Node<E> newNode = new Node<>(M);
                 newNode.addToNode(element);
                 current.setNextNode(newNode);
+                size++;
                 return true;
             }
             current = current.getNextNode();
         }
-        current.addToNode(element);
 
+        current.addToNode(element);
+        size++;
         return true;
     }
     public boolean add(int index, E element) {
 
         if (index < 0 || index > size()) {
-            throw new IndexOutOfBoundsException("Invalid index: " + index + " size of list: "+ size());
+            throw new IndexOutOfBoundsException("Invalid index: " + index + " because list size: "+ size());
         }
 
         else if (index % M == 0 && index == size()){
             add(element);
+            size++;
             return true;
         }
 
@@ -47,10 +60,12 @@ public class OneWayArrayList<E> implements IList<E> {
         }
 
         set(index, element);
+        size++;
         return true;
     }
     public void clear() {
         head = null;
+        size = 0;
     }
     public boolean contains(E element) {
 
@@ -72,7 +87,7 @@ public class OneWayArrayList<E> implements IList<E> {
     public E get(int index) {
 
         if (index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException("Invalid index: " + index + " size of list: "+ size());
+            throw new IndexOutOfBoundsException("Invalid index: " + index + " because list size: "+ size());
         }
 
         Node<E> current = head;
@@ -89,7 +104,7 @@ public class OneWayArrayList<E> implements IList<E> {
     public E set(int index, E element) {
 
         if (index < 0 || index > size()) {
-            throw new IndexOutOfBoundsException("Invalid index: " + index + " size of list: "+ size());
+            throw new IndexOutOfBoundsException("Invalid index: " + index + " because list size: "+ size());
         }
 
         Node<E> current = head;
@@ -126,10 +141,11 @@ public class OneWayArrayList<E> implements IList<E> {
         return -1;
     }
     public boolean isEmpty() {return size() == 0;}
+
     public E remove(int index) {
 
         if (index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException("Invalid index: " + index + " size of list: "+ size());
+            throw new IndexOutOfBoundsException("Invalid index: " + index + " because list size: "+ size());
         }
 
         E removedElement = get(index);
@@ -144,6 +160,7 @@ public class OneWayArrayList<E> implements IList<E> {
         if (head.getCounter() == 0){
 
             head = null;
+            size--;
             return removedElement;
         }
 
@@ -159,7 +176,7 @@ public class OneWayArrayList<E> implements IList<E> {
 
             current = current.getNextNode();
         }
-
+        size--;
         return removedElement;
     }
 
@@ -176,21 +193,38 @@ public class OneWayArrayList<E> implements IList<E> {
         return false; //nie ma takiego elementu
     }
     public int size() {
-
-        int pos = 0;
-        Node<E> current = head;
-
-        while(current != null) {
-
-            pos += current.getCounter();
-            current = current.getNextNode();
-        }
-
-        return pos;
+        return size;
     }
 
     public Node<E> getHead() {
         return head;
+    }
+
+    public void reverse(){
+
+        ArrayList<E> arrayList = new ArrayList<>();
+
+        Node<E>  node = head;
+        while(node != head)
+        for (int i = 0; i < size; i++) {
+
+            arrayList.add(i, get(size - 1 - i));
+        }
+
+        head = null;
+
+        for (int i = 0; i < arrayList.size(); i++) {
+
+            add(arrayList.get(i));
+
+        }
+
+
+
+    }
+
+    private E getNext(){
+        return null;
     }
 
 }

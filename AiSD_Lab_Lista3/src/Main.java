@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
+
         System.out.println("First Test (Strings): ");
         firstTest(3);
 
@@ -12,6 +13,9 @@ public class Main {
 
         System.out.println("\nFourth Test (Single Element List): ");
         singleElementListTest(3);
+
+
+
 
     }
 
@@ -27,6 +31,7 @@ public class Main {
         list.add("Ewelina");
 
         displayList(list);
+
 
         System.out.println("Size after adding: " + list.size());
         System.out.println("Element [0]: " + list.get(0));
@@ -87,7 +92,7 @@ public class Main {
 
         OneWayArrayList<Integer> list = new OneWayArrayList<>(M);
 
-        System.out.println("Initial size of the empty list: " + list.size());
+        System.out.println("Initial size: " + list.size());
         System.out.println("Is the empty list really empty? " + list.isEmpty());
 
     }
@@ -96,10 +101,12 @@ public class Main {
         OneWayArrayList<Integer> list = new OneWayArrayList<>(M);
 
         list.add(44);
-        System.out.println("Initial size of the single element list: " + list.size());
+        System.out.println("Initial size: " + list.size());
         System.out.println("Is the single element list empty? " + list.isEmpty());
-        System.out.println("Element at index 0: " + list.get(0));
-        System.out.println("Element at index 2: " + list.get(2));
+        System.out.println("Element [0]: " + list.get(0));
+        /*System.out.println("Element [2]: " + list.get(2)); */
+
+
 
     }
 
