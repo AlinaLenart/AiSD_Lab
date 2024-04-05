@@ -41,13 +41,13 @@ public class TwoWayLinkedList<E> implements IList<E> {
             head = newElem;
         }
 
-        else if (index == size()) { //dodanie na koniec niepustej
+        else if (index == size()) {     //dodanie na koniec niepustej listy
             tail.insertAfter(newElem);
             tail = newElem;
         }
 
         else {
-            Element<E> current = getElementAtIndex(index);
+            Element<E> current = getElementAtIndex(index);  //throws kiedy index > size, index = size obsluzony wyzej
             current.insertBefore(newElem);
         }
 
@@ -61,24 +61,46 @@ public class TwoWayLinkedList<E> implements IList<E> {
         size = 0;
     }
 
-    @Override
-    public boolean contains(E element) {
-        return false;
-    }
 
     @Override
     public E get(int index) {
-        return null;
+
+        Element<E> current = getElementAtIndex(index);
+        return current.getValue();
+
     }
 
     @Override
     public E set(int index, E e) {
-        return null;
+
+        Element<E> current = getElementAtIndex(index);
+        current.setValue(e);
+        return current.getValue();
+
     }
 
     @Override
     public int indexOf(E e) {
-        return 0;
+
+        Element<E> current = head;
+        int index = 0;
+
+        while (current != null) {
+
+            if (current.getValue().equals(e)) {
+                return index;
+            }
+
+            current = current.getNext();
+            index++;
+
+        }
+        return -1;
+    }
+
+    @Override
+    public boolean contains(E e) {
+        return indexOf(e) > -1;
     }
 
     @Override
@@ -88,11 +110,46 @@ public class TwoWayLinkedList<E> implements IList<E> {
 
     @Override
     public E remove(int index) {
-        return null;
+
+        Element<E> current = getElementAtIndex(index);
+
+        if (index == 0) {
+            head = current.getNext();
+        }
+        if (index == size() - 1){
+            tail = current.getPrevious();
+        }
+
+        current.remove();
+        size--;
+        return current.getValue();
+
     }
 
     @Override
     public boolean remove(E e) {
+
+        Element<E> current = head;
+
+        while (current != null) {
+
+            if (current.getValue().equals(e)) {
+
+                if (current == head) {
+                    head = current.getNext();
+                }
+                if (current == tail) {
+                    tail = current.getPrevious();
+                }
+
+                current.remove();
+                size--;
+                return true;
+            }
+
+            current = current.getNext();
+        }
+
         return false;
     }
 
@@ -101,16 +158,8 @@ public class TwoWayLinkedList<E> implements IList<E> {
         return size;
     }
 
-    public void displayLinkedList(){
-
-        Element<E> current = head;
-        for (int i = 0; i < size; i++) {
-            if (current != null) {
-
-                System.out.println(current);
-                current = current.getNext();
-            }
-        }
+    public Element getHead() {
+        return head;
     }
 
     private Element<E> getElementAtIndex(int index) {
@@ -120,9 +169,14 @@ public class TwoWayLinkedList<E> implements IList<E> {
         }
 
         Element<E> current = head;
+
         for (int i = 0; i < index; i++) {
+
             current = current.getNext();
         }
+
         return current;
     }
+
+
 }

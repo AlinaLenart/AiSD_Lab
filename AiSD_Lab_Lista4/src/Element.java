@@ -37,8 +37,14 @@ public class Element<E> {
 
     public void remove(){
 
-        this.getNext().setPrevious(this.getPrevious());
-        this.getPrevious().setNext(this.getNext());
+        if (next != null) {
+            next.setPrevious(previous);
+        }
+
+        if (previous != null) {
+            previous.setNext(next);
+        }
+
     }
 
     public Element getNext() {
