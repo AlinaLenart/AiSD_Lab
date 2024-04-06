@@ -149,10 +149,10 @@ public class TwoWayLinkedList<E> implements IList<E> {
 
             current = current.getNext();
         }
-
+//xyz
         return false;
     }
-
+    
     @Override
     public int size() {
         return size;
