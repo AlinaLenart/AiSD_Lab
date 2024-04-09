@@ -47,6 +47,13 @@ public class Element<E> {
 
     }
 
+    public void reverseHelper(){
+
+        Element<E> temp = previous;
+        this.setPrevious(next);
+        this.setNext(temp);
+
+    }
     public Element getNext() {
         return next;
     }

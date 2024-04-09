@@ -1,9 +1,9 @@
 public class TwoWayLinkedList<E> implements IList<E> {
     //dwukierunkowa, glowa i ogon, bez straznika, prosta(niecykliczna, ostatni wskazuje null)
-    //bez straznika musze sprawdzac null
     private Element head;
     private Element tail;
     private int size;
+
     public TwoWayLinkedList(){
         this.head = null;
         this.tail = null;
@@ -149,10 +149,24 @@ public class TwoWayLinkedList<E> implements IList<E> {
 
             current = current.getNext();
         }
-//xyz
+
         return false;
     }
-    
+
+    public void reverse(){
+
+        Element<E> current = head;
+        head = tail;
+        tail = current;
+
+        while (current != null){
+
+            current.reverseHelper();
+            current = current.getPrevious();
+
+        }
+
+    }
     @Override
     public int size() {
         return size;
@@ -177,6 +191,7 @@ public class TwoWayLinkedList<E> implements IList<E> {
 
         return current;
     }
+
 
 
 }

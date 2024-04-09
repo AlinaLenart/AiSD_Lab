@@ -1,13 +1,13 @@
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("\nString test: ");
+        System.out.println("\nSTRING TEST: ");
         stringTest();
 
-        System.out.println("\nEmpty test: ");
+        System.out.println("\nEMPTY TEST: ");
         emptyTest();
 
-        System.out.println("\nNulls test: ");
+        System.out.println("\nNULLS TEST: ");
         nullTest();
 
     }
@@ -26,6 +26,10 @@ public class Main {
 
         displayLinkedList(list);
 
+        list.reverse();
+        System.out.println("Lista po odwroceniu: ");
+        displayLinkedList(list);
+
         System.out.println("Element on index 2: " + list.get(2));
 
         list.set(0, "XYZ");
@@ -37,6 +41,10 @@ public class Main {
         list.remove("Borys");
         list.remove(0);
 
+        displayLinkedList(list);
+
+        list.reverse();
+        System.out.println("Lista po odwroceniu: ");
         displayLinkedList(list);
     }
 
@@ -80,7 +88,8 @@ public class Main {
 
         displayLinkedList(list);
 
-        list.remove(0);
+        list.reverse();
+        System.out.println("Lista po odwroceniu: ");
 
         displayLinkedList(list);
     }
