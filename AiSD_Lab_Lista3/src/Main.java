@@ -32,7 +32,6 @@ public class Main {
 
         displayList(list);
 
-
         System.out.println("Size after adding: " + list.size());
         System.out.println("Element [0]: " + list.get(0));
         list.add(2,"Beata");
@@ -50,6 +49,10 @@ public class Main {
         list.remove(4);
         System.out.println("List after removing element on index 4: ");
         displayList(list);
+
+        list.reverse(); System.out.println("List has been reversed:");
+        displayList(list);
+        System.out.println("Head now:"+ list.getHead());
 
         list.clear();
         System.out.println("List after clearing isEmpty? "+ list.isEmpty());

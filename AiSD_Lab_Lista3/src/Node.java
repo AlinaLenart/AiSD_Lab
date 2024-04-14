@@ -1,4 +1,4 @@
-
+import java.util.Arrays;
 
 public class Node<E> {
     private Node<E> nextNode;
@@ -22,6 +22,20 @@ public class Node<E> {
         return true;
     }
 
+    public void reverseNode(){
+        int start = 0;
+        int end = elements.length - 1;
+        while (start < end) {
+
+            E temp = elements[start];
+            elements[start] = elements[end];
+            elements[end] = temp;
+
+            start++;
+            end--;
+
+        }
+    }
 
     public Node<E> getNextNode() {return nextNode;}
 
@@ -48,4 +62,10 @@ public class Node<E> {
 
     public void setNextNode(Node<E> nextNode) {this.nextNode = nextNode;}
 
+    @Override
+    public String toString() {
+        return "Node{" +
+                "elements=" + Arrays.toString(elements) +
+                '}';
+    }
 }

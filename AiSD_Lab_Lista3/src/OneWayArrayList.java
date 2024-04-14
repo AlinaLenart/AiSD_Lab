@@ -6,14 +6,12 @@ public class OneWayArrayList<E> implements IList<E> {
     private final int M;
     private Node<E> head;
     private int size;
-    private int currentIndex;
 
     public OneWayArrayList(int M){
 
         this.M = M;
         this.head = null;
         this.size = 0;
-        this.currentIndex = 0;
     }
 
 
@@ -200,31 +198,36 @@ public class OneWayArrayList<E> implements IList<E> {
         return head;
     }
 
-    public void reverse(){
+    @SuppressWarnings("unchecked")
+    public void reverse() {
 
-        ArrayList<E> arrayList = new ArrayList<>();
+        E[] array = (E[]) new Object[size];
 
-        Node<E>  node = head;
-        while(node != head)
-        for (int i = 0; i < size; i++) {
+        Node<E> current = head;
+        int index = 0;
 
-            arrayList.add(i, get(size - 1 - i));
+        while (current != null && index < size) {
+
+            array[index] = current.getFromArray(index % M);
+            index++;
+
+            if (index % M == 0) {
+                current = current.getNextNode();
+            }
         }
 
-        head = null;
+        index = 0;
+        current = head;
 
-        for (int i = 0; i < arrayList.size(); i++) {
+        while (current != null && index < size) {
 
-            add(arrayList.get(i));
+            current.changeElement(array[size - index - 1], index % M);
+            index++;
 
+            if (index % M == 0) {
+                current = current.getNextNode();
+            }
         }
-
-
-
-    }
-
-    private E getNext(){
-        return null;
     }
 
 }
