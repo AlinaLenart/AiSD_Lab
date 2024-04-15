@@ -27,6 +27,6 @@ public class Statistics {
     }
 
     private double update(double value, double average) {
-        return (value - average) / n;
+        return average + (value - average) / n;
     }
 }

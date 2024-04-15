@@ -26,15 +26,11 @@ public class Node<E> {
 
     public int getCounter() {
 
-        int count = 0;
+        return counter;
+    }
 
-        for (int i = 0; i < elements.length; i++) {
-
-            if (elements[i] != null)
-                count++;
-        }
-
-        return count;
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 
     public E[] getElements() {return elements;}

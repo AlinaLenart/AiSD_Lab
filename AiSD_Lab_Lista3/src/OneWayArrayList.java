@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class OneWayArrayList<E> implements IList<E> {
     private final int M;
@@ -28,6 +26,7 @@ public class OneWayArrayList<E> implements IList<E> {
         while (current.getCounter() == M) {
 
             if (current.getNextNode() == null) {
+
                 Node<E> newNode = new Node<>(M);
                 newNode.addToNode(element);
                 current.setNextNode(newNode);
@@ -49,8 +48,6 @@ public class OneWayArrayList<E> implements IList<E> {
 
         else if (index % M == 0 && index == size()){
             add(element);
-            size++;
-            return true;
         }
 
         for (int i = size(); i > index - 1; i--) {
@@ -58,6 +55,13 @@ public class OneWayArrayList<E> implements IList<E> {
         }
 
         set(index, element);
+        Node<E> current = head;
+
+        while(current != null && current.getNextNode() != null){
+            current = current.getNextNode();
+        }
+
+        current.setCounter(current.getCounter() + 1);
         size++;
         return true;
     }
@@ -155,8 +159,8 @@ public class OneWayArrayList<E> implements IList<E> {
 
         set(size() - 1, null);
 
-        if (head.getCounter() == 0){
-
+        if (head.getCounter() == 1){
+            head.setCounter(0);
             head = null;
             size--;
             return removedElement;
@@ -174,6 +178,7 @@ public class OneWayArrayList<E> implements IList<E> {
 
             current = current.getNextNode();
         }
+        current.setCounter(current.getCounter() - 1);
         size--;
         return removedElement;
     }
@@ -201,13 +206,14 @@ public class OneWayArrayList<E> implements IList<E> {
     @SuppressWarnings("unchecked")
     public void reverse() {
 
-        E[] array = (E[]) new Object[size];
+        ArrayList<E> arrayList = new ArrayList<>();
+
         Node<E> current = head;
         int index = 0;
 
         while (current != null && index < size) {
 
-            array[index] = current.getFromArray(index % M);
+            arrayList.add(current.getFromArray(index % M));
             index++;
 
             if (index % M == 0) {
@@ -220,7 +226,8 @@ public class OneWayArrayList<E> implements IList<E> {
 
         while (current != null && index < size) {
 
-            current.changeElement(array[size - index - 1], index % M);
+            current.changeElement(arrayList.get(size - index - 1), index % M);
+
             index++;
 
             if (index % M == 0) {

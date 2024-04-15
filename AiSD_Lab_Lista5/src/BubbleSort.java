@@ -17,7 +17,7 @@ public class BubbleSort<T> extends AbstractSwappingSortingAlgorithm<T> {
 			for(int left = 0; left < (size - pass); ++left) {
 				int right = left + 1;
 				
-				if(compare(list.get(left), list.get(right)) > 0) {
+				if (compare(list.get(left), list.get(right)) > 0) {
 					swap(list, left, right);
 				}
 			}

@@ -14,7 +14,8 @@ public class Main {
         System.out.println("\nFourth Test (Single Element List): ");
         singleElementListTest(3);
 
-
+        System.out.println("\nNull Test: ");
+        nullTest(4);
 
 
     }
@@ -36,6 +37,7 @@ public class Main {
         System.out.println("Element [0]: " + list.get(0));
         list.add(2,"Beata");
         System.out.println("List after adding person on index 2:");
+        System.out.println("Size after adding: " + list.size());
 
         displayList(list);
 
@@ -80,7 +82,6 @@ public class Main {
 
         displayList(list);
 
-
         System.out.println("Does list contains 5? : " +  list.contains(5));
 
         System.out.println("Removed element: " + list.remove(7));
@@ -89,6 +90,10 @@ public class Main {
         displayList(list);
 
         System.out.println("List isEmpty? "+ list.isEmpty());
+
+        System.out.println("List after reversing it: ");
+        list.reverse();
+        displayList(list);
 
     }
     private static void emptyListTest(int M) {
@@ -112,10 +117,39 @@ public class Main {
 
 
     }
+    private static void nullTest(int M) {
+
+        OneWayArrayList<String> list = new OneWayArrayList<>(M);
+
+        System.out.println("Initial size: " + list.size());
+
+
+        for (int i = 0; i < 4; i++) {
+            list.add(null);
+        }
+
+        displayList(list);
+
+        System.out.println("Size after adding nulls: " + list.size());
+
+        System.out.println("Adding another null:");
+        list.add(null);
+        displayList(list);
+        System.out.println("Size after adding: " + list.size());
+
+        list.reverse();
+        System.out.println("List after reversing:");
+        displayList(list);
+
+        System.out.println("Head now: " + list.getHead());
+
+
+        list.clear();
+        System.out.println("List after clearing: isEmpty? " + list.isEmpty());
+    }
 
     private static <E> void displayList(OneWayArrayList<E> list) {
 
-        System.out.println("------ List ------");
         Node<E> currentNode = list.getHead();
         while (currentNode != null) {
             for (int i = 0; i < currentNode.getCounter(); i++) {
