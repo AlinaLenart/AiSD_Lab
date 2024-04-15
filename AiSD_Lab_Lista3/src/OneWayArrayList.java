@@ -202,7 +202,6 @@ public class OneWayArrayList<E> implements IList<E> {
     public void reverse() {
 
         E[] array = (E[]) new Object[size];
-
         Node<E> current = head;
         int index = 0;
 

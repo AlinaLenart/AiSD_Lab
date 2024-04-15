@@ -22,21 +22,6 @@ public class Node<E> {
         return true;
     }
 
-    public void reverseNode(){
-        int start = 0;
-        int end = elements.length - 1;
-        while (start < end) {
-
-            E temp = elements[start];
-            elements[start] = elements[end];
-            elements[end] = temp;
-
-            start++;
-            end--;
-
-        }
-    }
-
     public Node<E> getNextNode() {return nextNode;}
 
     public int getCounter() {
