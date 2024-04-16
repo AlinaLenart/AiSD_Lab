@@ -36,7 +36,6 @@ public class Main {
 
 
 
-
         testSort("InsertSort", markedComparator, orderedGenerator, arraySizes, "OrderedGenerator");
         testSort("InsertSort", markedComparator, reversedGenerator, arraySizes, "ReversedGenerator");
         testSort("InsertSort", markedComparator, randomGenerator, arraySizes, "RandomGenerator");
@@ -56,6 +55,7 @@ public class Main {
 
     }
 
+
     private static void testSort(String sortType, Comparator<MarkedValue<Integer>> markedComparator, Generator<MarkedValue<Integer>> generator, int[] arraySizes, String generatorType) {
 
         String fileName = sortType + generatorType + ".txt";
@@ -70,8 +70,8 @@ public class Main {
                     algorithm = new ModifiedInsertSort<>(markedComparator);
                 else if (sortType.equals("SelectSort"))
                     algorithm = new ModifiedSelectSort<>(markedComparator);
-                else // Assume ShakerSort
-                    algorithm = new ModifiedInsertSort<>(markedComparator);
+                else
+                    algorithm = new ShakerSort<>(markedComparator);
 
                 testing.results.swapping.Result result = Tester.runNTimes(algorithm, generator, size, 50);
                 String formattedOutput = String.format("%5d\t%f\t%f\t%f\t%f\t%f\t%f", size,

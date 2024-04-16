@@ -48,7 +48,4 @@ public class ModifiedSelectSort<T> extends AbstractSwappingSortingAlgorithm<T> {
 
         return list;
     }
-
-
-
 }
