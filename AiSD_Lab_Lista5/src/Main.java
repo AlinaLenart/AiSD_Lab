@@ -24,7 +24,7 @@ public class Main {
 
 
 
-        /*AbstractSwappingSortingAlgorithm<MarkedValue<Integer>> algorithm = new BubbleSort<>(markedComparator);
+        /*AbstractSwappingSortingAlgorithm<MarkedValue<Integer>> algorithm = new ShakerSort<>(markedComparator);
 
         testing.results.swapping.Result result = Tester.runNTimes(algorithm, randomGenerator, 1000, 200);
         printStatistic("time [ms]", result.averageTimeInMilliseconds(), result.timeStandardDeviation());
@@ -36,7 +36,7 @@ public class Main {
 
 
 
-        testSort("InsertSort", markedComparator, orderedGenerator, arraySizes, "OrderedGenerator");
+        /*testSort("InsertSort", markedComparator, orderedGenerator, arraySizes, "OrderedGenerator");
         testSort("InsertSort", markedComparator, reversedGenerator, arraySizes, "ReversedGenerator");
         testSort("InsertSort", markedComparator, randomGenerator, arraySizes, "RandomGenerator");
         testSort("InsertSort", markedComparator, shuffledGenerator, arraySizes, "ShuffledGenerator");
@@ -49,7 +49,7 @@ public class Main {
         testSort("ShakerSort", markedComparator, orderedGenerator, arraySizes, "OrderedGenerator");
         testSort("ShakerSort", markedComparator, reversedGenerator, arraySizes, "ReversedGenerator");
         testSort("ShakerSort", markedComparator, randomGenerator, arraySizes, "RandomGenerator");
-        testSort("ShakerSort", markedComparator, shuffledGenerator, arraySizes, "ShuffledGenerator");
+        testSort("ShakerSort", markedComparator, shuffledGenerator, arraySizes, "ShuffledGenerator");*/
 
 
 

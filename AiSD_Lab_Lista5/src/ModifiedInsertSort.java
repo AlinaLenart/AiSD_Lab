@@ -14,16 +14,19 @@ public class ModifiedInsertSort<T> extends AbstractSwappingSortingAlgorithm<T> {
     public List<T> sort(List<T> list) {
 
         for (int i = 1; i < list.size(); i++) {
+
             T key = list.get(i);
             int insertIndex = binarySearch(list, key, 0, i - 1);
+
             if (insertIndex < i && compare(key, list.get(insertIndex)) == 0) {
-                // Jeśli klucz jest równy innemu kluczowi, szukaj miejsca za równym kluczem
+
                 while (insertIndex < i && compare(key, list.get(insertIndex)) == 0) {
                     insertIndex++;
                 }
             }
+
             for (int j = i; j > insertIndex; j--) {
-                swap(list, j, j - 1); // Przesunięcie elementów w prawo
+                swap(list, j, j - 1);
             }
         }
         return list;
