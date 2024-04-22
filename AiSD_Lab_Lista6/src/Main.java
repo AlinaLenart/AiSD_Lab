@@ -12,7 +12,7 @@ import testing.generation.conversion.*;
 public class Main {
     public static void main(String[] args) {
 
-        int[] sizes = {0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 100, 150, 200, 250, 500, 1000, 2000, 5000, 10000};
+        int[] sizes = {0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 100, 150, 200, 300, 400, 500, 600, 750, 1000};
 
 
         Comparator<MarkedValue<Integer>> markedComparator = new MarkedValueComparator<Integer>(new IntegerComparator());
@@ -39,19 +39,19 @@ public class Main {
 
 
 
-        /*testSort("MergeSort", markedComparator, orderedGenerator, orderedLLGenerator,  sizes, "OrderedGenerator");
+        testSort("MergeSort", markedComparator, orderedGenerator, orderedLLGenerator,  sizes, "OrderedGenerator");
         testSort("MergeSort", markedComparator, reversedGenerator, reversedLLGenerator, sizes, "ReversedGenerator");
         testSort("MergeSort", markedComparator, randomGenerator, randomLLGenerator, sizes, "RandomGenerator");
-        testSort("MergeSort", markedComparator, shuffledGenerator, shuffledLLGenerator, sizes, "ShuffledGenerator");*/
+        testSort("MergeSort", markedComparator, shuffledGenerator, shuffledLLGenerator, sizes, "ShuffledGenerator");
 
 
-        //testSort("QuickSortFirst", markedComparator, orderedGenerator, orderedLLGenerator,  sizes, "OrderedGenerator");
+        /*testSort("QuickSortFirst", markedComparator, orderedGenerator, orderedLLGenerator,  sizes, "OrderedGenerator");
         testSort("QuickSortFirst", markedComparator, reversedGenerator, reversedLLGenerator, sizes, "ReversedGenerator");
         testSort("QuickSortFirst", markedComparator, randomGenerator, randomLLGenerator, sizes, "RandomGenerator");
         testSort("QuickSortFirst", markedComparator, shuffledGenerator, shuffledLLGenerator, sizes, "ShuffledGenerator");
 
 
-        /*testSort("QuickSortRandom", markedComparator, orderedGenerator, orderedLLGenerator,  sizes, "OrderedGenerator");
+        testSort("QuickSortRandom", markedComparator, orderedGenerator, orderedLLGenerator,  sizes, "OrderedGenerator");
         testSort("QuickSortRandom", markedComparator, reversedGenerator, reversedLLGenerator, sizes, "ReversedGenerator");
         testSort("QuickSortRandom", markedComparator, randomGenerator, randomLLGenerator, sizes, "RandomGenerator");
         testSort("QuickSortRandom", markedComparator, shuffledGenerator, shuffledLLGenerator, sizes, "ShuffledGenerator");*/
