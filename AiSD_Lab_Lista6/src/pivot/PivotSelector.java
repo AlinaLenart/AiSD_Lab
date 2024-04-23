@@ -1,3 +1,5 @@
+package pivot;
+
 import java.util.List;
 
 public interface PivotSelector<T> {

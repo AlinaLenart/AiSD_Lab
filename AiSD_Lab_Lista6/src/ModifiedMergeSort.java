@@ -30,7 +30,9 @@ public class ModifiedMergeSort<T> extends AbstractSwappingSortingAlgorithm<T> {
 
         }
 
-        list = merged;
+        List<T> sortedList = queue.poll();
+        list.clear();
+        list.addAll(sortedList);
         return list;
     }
 

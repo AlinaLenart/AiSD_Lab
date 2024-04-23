@@ -2,6 +2,9 @@ import java.util.Comparator;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
+import pivot.FirstElementPivotSelector;
+import pivot.PivotSelector;
+import pivot.RandomPivotSelector;
 import core.AbstractSwappingSortingAlgorithm;
 import testing.*;
 import testing.comparators.*;
