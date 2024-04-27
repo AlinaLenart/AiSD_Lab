@@ -42,22 +42,22 @@ public class Main {
 
 
 
-        testSort("MergeSort", markedComparator, orderedGenerator, orderedLLGenerator,  sizes, "OrderedGenerator");
+        /*testSort("MergeSort", markedComparator, orderedGenerator, orderedLLGenerator,  sizes, "OrderedGenerator");
         testSort("MergeSort", markedComparator, reversedGenerator, reversedLLGenerator, sizes, "ReversedGenerator");
         testSort("MergeSort", markedComparator, randomGenerator, randomLLGenerator, sizes, "RandomGenerator");
-        testSort("MergeSort", markedComparator, shuffledGenerator, shuffledLLGenerator, sizes, "ShuffledGenerator");
+        testSort("MergeSort", markedComparator, shuffledGenerator, shuffledLLGenerator, sizes, "ShuffledGenerator");*/
 
 
         /*testSort("QuickSortFirst", markedComparator, orderedGenerator, orderedLLGenerator,  sizes, "OrderedGenerator");
         testSort("QuickSortFirst", markedComparator, reversedGenerator, reversedLLGenerator, sizes, "ReversedGenerator");
         testSort("QuickSortFirst", markedComparator, randomGenerator, randomLLGenerator, sizes, "RandomGenerator");
-        testSort("QuickSortFirst", markedComparator, shuffledGenerator, shuffledLLGenerator, sizes, "ShuffledGenerator");
+        testSort("QuickSortFirst", markedComparator, shuffledGenerator, shuffledLLGenerator, sizes, "ShuffledGenerator");*/
 
 
         testSort("QuickSortRandom", markedComparator, orderedGenerator, orderedLLGenerator,  sizes, "OrderedGenerator");
         testSort("QuickSortRandom", markedComparator, reversedGenerator, reversedLLGenerator, sizes, "ReversedGenerator");
         testSort("QuickSortRandom", markedComparator, randomGenerator, randomLLGenerator, sizes, "RandomGenerator");
-        testSort("QuickSortRandom", markedComparator, shuffledGenerator, shuffledLLGenerator, sizes, "ShuffledGenerator");*/
+        testSort("QuickSortRandom", markedComparator, shuffledGenerator, shuffledLLGenerator, sizes, "ShuffledGenerator");
 
 
     }
