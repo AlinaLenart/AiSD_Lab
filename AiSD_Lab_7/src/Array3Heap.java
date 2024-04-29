@@ -1,7 +1,7 @@
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 
-public class Array3Heap<T extends Comparable<T>> {
+public class Array3Heap<T> {
     private int capacity;
     private T[] heapArray;
     private int size;
@@ -10,7 +10,7 @@ public class Array3Heap<T extends Comparable<T>> {
     @SuppressWarnings("unchecked")
     public Array3Heap(int startCapacity, Comparator<T> comparator) {
         this.capacity = startCapacity;
-        this.heapArray = (T[]) (new Object[capacity]);
+        this.heapArray = (T[]) new Object[capacity];
         this.comparator = comparator;
         this.size = 0;
     }
@@ -22,9 +22,9 @@ public class Array3Heap<T extends Comparable<T>> {
         size = 0;
     }
 
-    public void add(T element) throws Exception {
-        if (element == null){
-            throw new Exception("Null is not valid value");
+    public void add(T element) {
+        if (element == null) {
+            throw new IllegalArgumentException("Value cannot be null");
         }
         if (size == heapArray.length) { //gdy w kopcu nie ma miejsca, należy rozmiar podwoić
             increaseCapacity();
@@ -91,7 +91,7 @@ public class Array3Heap<T extends Comparable<T>> {
     @SuppressWarnings("unchecked")
     private void increaseCapacity() {
         int newCapacity = heapArray.length * 2;
-        T[] newArray = (T[]) (new Object[newCapacity]);
+        T[] newArray = (T[]) new Object[newCapacity];
 
         for (int i = 0; i < size; i++) {
             newArray[i] = heapArray[i];
