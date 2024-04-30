@@ -5,6 +5,7 @@ public class Main {
         testInt();
         testString();
         testObjects();
+        testAdd();
     }
     private static void testInt() {
         System.out.println("Test on Integer Heap:");
@@ -52,6 +53,17 @@ public class Main {
             Artist artist = heap.maximum();
             System.out.println(artist.getName() +" "+ artist.getSurname() + " - " + artist.getAge() + " years old");
         }
+    }
+    private static void testAdd() {
+        Comparator<Integer> comparator = Comparator.naturalOrder();
+        Test<Integer> heap = new Test<>(5, comparator, 3);
+        heap.add(5);
+        heap.add(8);
+        heap.add(3);
+        heap.add(12);
+        heap.add(6);
+
+        System.out.println("Heap size after adding elements: " + heap.size());
     }
 
 }
