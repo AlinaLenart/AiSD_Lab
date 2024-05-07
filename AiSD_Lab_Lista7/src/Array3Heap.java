@@ -107,4 +107,32 @@ public class Array3Heap<T> {
     public int size() {
         return size;
     }
+
+    public T nthElement(int n) {
+        if (n < 1 || n > size) {
+            throw new IllegalArgumentException("Invalid value of n");
+        }
+        // Utwórz kopię oryginalnego kopca
+        Array3Heap<T> copyHeap = copyHeap(this);
+        // Zastosuj operację maximum n razy, aby znaleźć n-tego co do wielkości elementu
+        for (int i = 0; i < n - 1; i++) {
+            copyHeap.maximum();
+        }
+        return copyHeap.maximum();
+    }
+
+    // Metoda do tworzenia kopii kopca
+    private Array3Heap<T> copyHeap(Array3Heap<T> originalHeap) {
+        Array3Heap<T> copy = new Array3Heap<>(originalHeap.size(), originalHeap.comparator);
+        // Dodaj wszystkie elementy z oryginalnego kopca do kopii
+        for (int i = 0; i < originalHeap.size(); i++) {
+            copy.add(originalHeap.heapArray[i]);
+        }
+        return copy;
+    }
+
+
+
+
+
 }

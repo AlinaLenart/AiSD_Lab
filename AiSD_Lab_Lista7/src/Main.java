@@ -5,7 +5,6 @@ public class Main {
         testInt();
         testString();
         testObjects();
-        testAdd();
     }
     private static void testInt() {
         System.out.println("Test on Integer Heap:");
@@ -27,14 +26,18 @@ public class Main {
         Comparator<String> lengthComparator = Comparator.comparingInt(String::length);
         Array3Heap<String> heap = new Array3Heap<>(10, lengthComparator);
 
-        heap.add("Jan");
+        heap.add("Kuba");
         heap.add("Janusz");
         heap.add("Genowefa");
         heap.add("Kamil");
         heap.add("Bartlomiej");
+        heap.add("Jan");
 
+        System.out.println("Czwarty: " + heap.nthElement(4));
+        int maxIndex = 1;
         while (!heap.isEmpty()) {
-            System.out.println(heap.maximum());
+            System.out.println(maxIndex + ". " + heap.maximum());
+            maxIndex++;
         }
     }
 
@@ -53,17 +56,6 @@ public class Main {
             Artist artist = heap.maximum();
             System.out.println(artist.getName() +" "+ artist.getSurname() + " - " + artist.getAge() + " years old");
         }
-    }
-    private static void testAdd() {
-        Comparator<Integer> comparator = Comparator.naturalOrder();
-        Test<Integer> heap = new Test<>(5, comparator, 3);
-        heap.add(5);
-        heap.add(8);
-        heap.add(3);
-        heap.add(12);
-        heap.add(6);
-
-        System.out.println("Heap size after adding elements: " + heap.size());
     }
 
 }
