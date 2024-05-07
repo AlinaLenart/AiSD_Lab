@@ -14,6 +14,17 @@ public class Array3Heap<T> {
         this.comparator = comparator;
         this.size = 0;
     }
+    @SuppressWarnings("unchecked")
+    public Array3Heap(Array3Heap<T> heapToCopy) {
+        this.capacity = heapToCopy.capacity;
+        this.comparator = heapToCopy.comparator;
+        this.size = heapToCopy.size();
+        this.heapArray = (T[]) new Object[capacity];
+
+        for (int i = 0; i < heapToCopy.size(); i++) {
+            this.heapArray[i] = heapToCopy.heapArray[i];
+        }
+    }
 
     public void clear() {
         for (int i = 0; i < size; i++) {
@@ -91,12 +102,12 @@ public class Array3Heap<T> {
     @SuppressWarnings("unchecked")
     private void increaseCapacity() {
         int newCapacity = heapArray.length * 2;
-        T[] newArray = (T[]) new Object[newCapacity];
+        T[] newHeapArray = (T[]) new Object[newCapacity];
 
         for (int i = 0; i < size; i++) {
-            newArray[i] = heapArray[i];
+            newHeapArray[i] = heapArray[i];
         }
-        heapArray = newArray;
+        heapArray = newHeapArray;
     }
 
 
@@ -112,23 +123,14 @@ public class Array3Heap<T> {
         if (n < 1 || n > size) {
             throw new IllegalArgumentException("Invalid value of n");
         }
-        // Utwórz kopię oryginalnego kopca
-        Array3Heap<T> copyHeap = copyHeap(this);
-        // Zastosuj operację maximum n razy, aby znaleźć n-tego co do wielkości elementu
-        for (int i = 0; i < n - 1; i++) {
+
+        Array3Heap<T> copyHeap = new Array3Heap<>(this); // zlozonosc O(n)
+
+        for (int i = 0; i < n - 1; i++) { // zlozonosc O(k*logn), k wprowadzony numer maksymalnego elementu, O(logn) ma operacja maks
             copyHeap.maximum();
         }
-        return copyHeap.maximum();
-    }
 
-    // Metoda do tworzenia kopii kopca
-    private Array3Heap<T> copyHeap(Array3Heap<T> originalHeap) {
-        Array3Heap<T> copy = new Array3Heap<>(originalHeap.size(), originalHeap.comparator);
-        // Dodaj wszystkie elementy z oryginalnego kopca do kopii
-        for (int i = 0; i < originalHeap.size(); i++) {
-            copy.add(originalHeap.heapArray[i]);
-        }
-        return copy;
+        return copyHeap.maximum();
     }
 
 

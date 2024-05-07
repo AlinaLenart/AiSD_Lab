@@ -2,9 +2,11 @@ import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
+
         testInt();
         testString();
         testObjects();
+
     }
     private static void testInt() {
         System.out.println("Test on Integer Heap:");
@@ -17,8 +19,12 @@ public class Main {
         heap.add(12);
         heap.add(6);
 
+        System.out.println("Trzeci max: " + heap.nthElement(3));
+
+        int maxIndex = 1;
         while (!heap.isEmpty()) {
-            System.out.println("Max: " + heap.maximum());
+            System.out.println(maxIndex + ". " + heap.maximum());
+            maxIndex++;
         }
     }
     private static void testString(){
@@ -33,7 +39,8 @@ public class Main {
         heap.add("Bartlomiej");
         heap.add("Jan");
 
-        System.out.println("Czwarty: " + heap.nthElement(4));
+        System.out.println("Czwarty max: " + heap.nthElement(4));
+
         int maxIndex = 1;
         while (!heap.isEmpty()) {
             System.out.println(maxIndex + ". " + heap.maximum());
