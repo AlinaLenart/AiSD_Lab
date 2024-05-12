@@ -1,6 +1,6 @@
 public class Node<T> {
     private T key;
-    private Node left, right;
+    private Node<T> left, right;
     public Node (T key) {
         this.key = key;
         this.left = right = null;
@@ -14,7 +14,7 @@ public class Node<T> {
         this.key = key;
     }
 
-    public Node getLeft() {
+    public Node<T> getLeft() {
         return left;
     }
 
@@ -22,7 +22,7 @@ public class Node<T> {
         this.left = left;
     }
 
-    public Node getRight() {
+    public Node<T> getRight() {
         return right;
     }
 
