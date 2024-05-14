@@ -10,6 +10,14 @@ public class Node<T> {
         return key;
     }
 
+    public Node<T> findMinIterative() {
+        Node<T> current = this;
+        while (current.getLeft() != null) {
+            current = current.getLeft();
+        }
+        return current;
+    }
+
     public void setKey(T key) {
         this.key = key;
     }

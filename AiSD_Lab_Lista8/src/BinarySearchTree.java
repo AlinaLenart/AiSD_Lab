@@ -10,15 +10,17 @@ public class BinarySearchTree<T> {
         this.comparator = comparator;
     }
 
-    public void insert(T key) {
+    public void insert(T key) { //O(logn) lub O(n)
         Node<T> newNode = new Node<>(key);
         Node<T> current = root;
         Node<T> parent = null;
 
         while (current != null) {
             parent = current;
+
             if (comparator.compare(key, current.getKey()) < 0)
                 current = current.getLeft();
+
             else
                 current = current.getRight();
         }
@@ -31,6 +33,7 @@ public class BinarySearchTree<T> {
 
         else
             parent.setRight(newNode);
+
     }
 
 
@@ -39,27 +42,28 @@ public class BinarySearchTree<T> {
     }
 
     private boolean searchRecursive(Node<T> node, T key) { //O(h), h to wysokość drzewa,
-        // worst case: kiedy drzewo BST jest niesbalansowane, ma formę listy, wysokość h będzie równa liczbie węzłów w drzewie, co oznacza złożoność O(n)
+        // worst case: kiedy drzewo BST jest niesbalansowane, ma forme listy, wysokosc h będzie rowna liczbie wezlow w drzewie, czyli zlozonosc O(n)
 
         if (node == null) {
             return false;
         }
 
-        if (key == null) {
+        if (key == null) { //unikniecie null pointer exception
             return node.getKey() == null || searchRecursive(node.getLeft(), key) || searchRecursive(node.getRight(), key);
         }
 
-        if (key.equals(node.getKey())) {
+        if (key.equals(node.getKey()))
             return true;
-        } else if (comparator.compare(key, node.getKey()) < 0) {
+
+        else if (comparator.compare(key, node.getKey()) < 0)
             return searchRecursive(node.getLeft(), key);
-        } else {
+
+        else
             return searchRecursive(node.getRight(), key);
-        }
+
     }
 
-
-    public T findMin() {
+    public T findMin() { //O(h)
         if (root == null) {
             throw new NoSuchElementException("Root is null");
         }
@@ -102,29 +106,25 @@ public class BinarySearchTree<T> {
     }
 
     public T successor(T elem) {
-        Node<T> succNode = successorNode(root, elem);
-        return succNode == null ? null : succNode.getKey();
-    }
-
-    private Node<T> successorNode(Node<T> node, T elem) {
-        if (node == null) {
-            throw new NoSuchElementException("Element not found or no successor exists");
-        }
-
+        Node<T> current = root;
         Node<T> successor = null;
-        while (node != null) {
-            int cmp = comparator.compare(elem, node.getKey());
-            if (cmp == 0) {
-                if (node.getRight() != null) {
-                    return findMinRecursive(node.getRight());
-                } else {
-                    return successor;
+
+        while (current != null) {
+            int cmp = comparator.compare(elem, current.getKey());
+            if (cmp == 0) { //znalezlismy node'a
+                if (current.getRight() != null) {
+                    return current.getRight().findMinIterative().getKey();
                 }
-            } else if (cmp < 0) {
-                successor = node;
-                node = node.getLeft();
-            } else { // cmp > 0
-                node = node.getRight();
+                else {
+                    return (successor != null) ? successor.getKey() : null;
+                }
+            }
+            else if (cmp < 0) { //lewe podrzewo
+                successor = current;
+                current = current.getLeft();
+            }
+            else { //prawe podrzewo
+                current = current.getRight();
             }
         }
 
@@ -136,69 +136,67 @@ public class BinarySearchTree<T> {
         if (root == null) {
             throw new NoSuchElementException("Tree is empty");
         }
-        if (!search(elem)) {
-            throw new NoSuchElementException("Element not found");
-        }
         root = deleteIterative(elem, root);
     }
 
-    private Node<T> deleteIterative(T elem, Node<T> node) {
-        Node<T> parent = null;
-        Node<T> current = node;
+   private Node<T> deleteIterative(T elem, Node<T> node) {
+        Node<T> current = node; //wierzcholek
+        Node<T> previous = null;
 
         while (current != null) {
-            int cmp = comparator.compare(elem, current.getKey());
-            if (cmp < 0) {
-                parent = current;
-                current = current.getLeft();
-            } else if (cmp > 0) {
-                parent = current;
-                current = current.getRight();
-            } else {
-                return deleteNode(parent, current);
+
+            T currentKey = current.getKey();
+            if ((currentKey == null && elem == null) || (currentKey != null && currentKey.equals(elem))) { //znalezlismy element do usuwania
+                break;
             }
+
+            previous = current;
+            int cmp;
+            if (currentKey == null || elem == null) {
+                cmp = (currentKey == null) ? 1 : -1; //null jako wartosc wieksza
+            }
+            else {
+                cmp = comparator.compare(elem, currentKey);
+            }
+
+            if (cmp < 0) //mniejsza idziemy w lewo
+                current = current.getLeft();
+            else
+                current = current.getRight();
         }
-        return node;
-    }
 
-    private Node<T> deleteNode(Node<T> parent, Node<T> nodeToDelete) {
-        if (nodeToDelete.getLeft() == null || nodeToDelete.getRight() == null) {
-            return handleNodeWithLessThanTwoChildren(parent, nodeToDelete);
-        } else {
-            return handleNodeWithTwoChildren(nodeToDelete);
+        if (current == null) {
+            throw new NoSuchElementException("Element not found");
         }
-    }
+        //current jest naszym elementem do usuniecia
+        if (current.getLeft() == null || current.getRight() == null) { //ma max 1 dziecko
+            Node<T> newCurrent = (current.getLeft() == null) ? current.getRight() : current.getLeft();
 
-    private Node<T> handleNodeWithLessThanTwoChildren(Node<T> parent, Node<T> nodeToDelete) {
-        Node<T> child = (nodeToDelete.getLeft() != null) ? nodeToDelete.getLeft() : nodeToDelete.getRight();
-        if (parent == null) {
-            return child;
-        } else if (parent.getLeft() == nodeToDelete) {
-            parent.setLeft(child);
-        } else {
-            parent.setRight(child);
+            if (previous == null)
+                return newCurrent;
+
+            if (previous.getLeft() == current)
+                previous.setLeft(newCurrent);
+
+            else
+                previous.setRight(newCurrent);
         }
-        return nodeToDelete;
-    }
+        else { //ma dwojke dzieci
+            Node<T> p = null;
+            Node<T> temp = current.getRight();
 
-    private Node<T> handleNodeWithTwoChildren(Node<T> nodeToDelete) {
-        Node<T> successor = findSuccessor(nodeToDelete.getRight());
-        nodeToDelete.setKey(successor.getKey());
-        nodeToDelete.setRight(deleteMin(nodeToDelete.getRight()));
-        return nodeToDelete;
-    }
+            while (temp.getLeft() != null) {
+                p = temp;
+                temp = temp.getLeft();
+            }
 
-    private Node<T> deleteMin(Node<T> node) {
-        if (node.getLeft() == null) {
-            return node.getRight();
-        }
-        node.setLeft(deleteMin(node.getLeft()));
-        return node;
-    }
+            if (p != null)
+                p.setLeft(temp.getRight());
 
-    private Node<T> findSuccessor(Node<T> node) {
-        while (node.getLeft() != null) {
-            node = node.getLeft();
+            else
+                current.setRight(temp.getRight());
+
+            current.setKey(temp.getKey());
         }
         return node;
     }

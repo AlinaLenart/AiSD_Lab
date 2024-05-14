@@ -1,5 +1,5 @@
 public class IntegerToStringExec implements IExecutor<Integer, String>{
-    StringBuffer line = new StringBuffer();
+    private final StringBuffer line = new StringBuffer();
 
     @Override
     public void execute(Integer elem) {
