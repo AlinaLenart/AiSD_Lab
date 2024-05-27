@@ -2,7 +2,32 @@ import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
-        test1();
+        testMod();
+        //test1();
+    }
+
+    private static void testMod(){
+        Comparator<Integer> comp = Comparator.naturalOrder();
+        IntBSTTest bst = new IntBSTTest(comp);
+
+        bst.insert(50);//             50
+        bst.insert(30);//           /    \
+        bst.insert(20);//         30      70
+        bst.insert(40);//        /  \    /  \
+        bst.insert(70);//      20   40  60   80
+        bst.insert(60);//
+        bst.insert(80);//
+
+        IntBSTTest max = bst.maxSumSubtree(220);
+
+        System.out.println("\nPre-order Traversal:");
+        IntegerToStringExec executor = new IntegerToStringExec();
+        max.preOrderWalk(executor);
+        String traversalResult = executor.getResult();
+        System.out.println(traversalResult);
+
+        System.out.println();
+
     }
     private static void test1(){
         Comparator<Integer> comp = Comparator.naturalOrder();

@@ -2,7 +2,7 @@ import java.util.Comparator;
 import java.util.NoSuchElementException;
 
 public class BinarySearchTree<T> {
-    private Node<T> root;
+    protected Node<T> root;
     private final Comparator<T> comparator;
 
     public BinarySearchTree(Comparator<T> comparator) {
@@ -201,8 +201,13 @@ public class BinarySearchTree<T> {
         return node;
     }
 
+    public Node<T> getRoot() {
+        return root;
+    }public void setRoot(Node<T> newRoot){
+        this.root = newRoot;
+    }
 
-
-
-
+    public Comparator<T> getComparator() {
+        return comparator;
+    }
 }
