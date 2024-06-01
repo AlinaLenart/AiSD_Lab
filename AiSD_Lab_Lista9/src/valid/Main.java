@@ -1,4 +1,4 @@
-package proby;
+package valid;
 import java.util.Comparator;
 
 public class Main {
@@ -21,6 +21,7 @@ public class Main {
         btree.printTree(btree.getRoot(), 0);
 
         System.out.println("\nB-tree have 19? " + btree.search(19, btree.getRoot()));
+        System.out.println("B-tree have 59? " + btree.search(19, btree.getRoot()));
         System.out.println("B-tree have 10? " + btree.search(10, btree.getRoot()));
 
         btree.delete(7);

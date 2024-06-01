@@ -1,5 +1,4 @@
-package proby;
-import java.nio.channels.AlreadyConnectedException;
+package valid;
 import java.util.Comparator;
 public class BTree<T> {
     private Node<T> root;
@@ -21,11 +20,11 @@ public class BTree<T> {
         if (idx >= 0) {
             return true;
         } else {
-            idx = -(idx + 1); // calculate the correct child index
+            idx = -(idx + 1); //liczenie do ktorego dziecka przechodzimy
             if (node.isLeaf()) {
-                return false; // Key not found in a leaf node
-            } else {
-                // Recursively search in the appropriate child node
+                return false; //nie znaleziono - bo to lisc
+            }
+            else {
                 return search(key, node.getChildren()[idx]);
             }
         }
