@@ -6,16 +6,15 @@ public class Node<T> {
         this.left = right = null;
     }
 
-    public T getKey() {
-        return key;
-    }
-
     public Node<T> findMinIterative() {
         Node<T> current = this;
         while (current.getLeft() != null) {
             current = current.getLeft();
         }
         return current;
+    }
+    public T getKey() {
+        return key;
     }
 
     public void setKey(T key) {

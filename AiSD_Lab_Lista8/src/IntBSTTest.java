@@ -2,13 +2,13 @@ import java.util.Comparator;
 
 public class IntBSTTest extends BinarySearchTree<Integer> {
 
-    private static class MaxSumSubtreeResult {
+    private static class Result {
         int sum;
-        IntBSTTest subtree;
+        Node<Integer> subtreeRoot;
 
-        MaxSumSubtreeResult(int sum, IntBSTTest subtree) {
+        Result(int sum, Node<Integer> subtreeRoot) {
             this.sum = sum;
-            this.subtree = subtree;
+            this.subtreeRoot = subtreeRoot;
         }
     }
 
@@ -16,42 +16,35 @@ public class IntBSTTest extends BinarySearchTree<Integer> {
         super(comp);
     }
 
-
     public IntBSTTest maxSumSubtree(int n) {
-        MaxSumSubtreeResult result = maxSumSubtree(root, n);
-        return result.subtree;
+        Result result = maxSumSubtree(root, n);
+        IntBSTTest subtree = new IntBSTTest(getComparator());
+        if (result.subtreeRoot != null) {
+            copySubtree(subtree, result.subtreeRoot);
+        }
+        return subtree;
     }
 
-
-    private MaxSumSubtreeResult maxSumSubtree(Node<Integer> node, int n) {
+    private Result maxSumSubtree(Node<Integer> node, int n) {
         if (node == null) {
-            return new MaxSumSubtreeResult(0, new IntBSTTest(getComparator()));
+            return new Result(0, null);
         }
 
-        MaxSumSubtreeResult leftResult = maxSumSubtree(node.getLeft(), n);
-        MaxSumSubtreeResult rightResult = maxSumSubtree(node.getRight(), n);
+        Result leftResult = maxSumSubtree(node.getLeft(), n);
+        Result rightResult = maxSumSubtree(node.getRight(), n);
 
         int currentSum = node.getKey() + leftResult.sum + rightResult.sum;
 
-
         if (currentSum < n) {
-
-            IntBSTTest subtree = new IntBSTTest(getComparator());
-            subtree.insert(node.getKey());
-            copySubtree(subtree, node.getLeft());
-            copySubtree(subtree, node.getRight());
-            return new MaxSumSubtreeResult(currentSum, subtree);
+            return new Result(currentSum, node);
         }
-
 
         if (leftResult.sum > rightResult.sum && leftResult.sum < n) {
             return leftResult;
-        }
-        else if (rightResult.sum < n) {
+        } else if (rightResult.sum < n) {
             return rightResult;
-        }
-        else {
-            return new MaxSumSubtreeResult(0, new IntBSTTest(getComparator()));
+        } else {
+            return new Result(0, null);
         }
     }
 
