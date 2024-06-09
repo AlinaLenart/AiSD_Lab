@@ -8,7 +8,7 @@ public class Main {
 
     private static void testMod(){
         Comparator<Integer> comp = Comparator.naturalOrder();
-        IntBSTTest bst = new IntBSTTest(comp);
+        IntBST bst = new IntBST(comp);
 
         bst.insert(50);//             50
         bst.insert(30);//           /    \
@@ -18,7 +18,7 @@ public class Main {
         bst.insert(60);//
         bst.insert(80);//
 
-        IntBSTTest max = bst.maxSumSubtree(220);
+        IntBST max = bst.maxSumSubtree(220);
 
         System.out.println("\nPre-order Traversal:");
         IntegerToStringExec executor = new IntegerToStringExec();

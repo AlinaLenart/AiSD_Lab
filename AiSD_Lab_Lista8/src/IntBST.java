@@ -1,58 +1,59 @@
-//import java.util.Comparator;
-//
-//public class IntBST<Integer> extends BinarySearchTree<Integer> {
-//    private int max;
-//
-//    public IntBST(Comparator<Integer> comparator) {
-//        super(comparator);
-//        this.max = 0;
-//    }
-//
-//    public IntBST(Comparator<Integer> comparator, Node<Integer> newRoot) {
-//        super(comparator);
-//        setRoot(newRoot);
-//        this.max = 0;
-//    }
-//
-//    public IntBST<Integer> maxSumSubtree(int n) {
-//        if (getRoot() == null || n < 1) {
-//            throw new IllegalStateException("Root is null or invalid n");
-//        }
-//
-//        IntBST<Integer> maxSubtree = new IntBST<>(super.getComparator());
-//        max = 0;
-//        maxSumSubtree(getRoot(), n, maxSubtree);
-//        return maxSubtree;
-//    }
-//
-//    private void maxSumSubtree(Node<Integer> node, int n, IntBST<Integer> maxSubtree) {
-//        if (node == null) {
-//            return;
-//        }
-//
-//        int leftSum = sumSubtree(node.getLeft());
-//        int rightSum = sumSubtree(node.getRight());
-//
-//        int subtreeSum = leftSum + rightSum + (int) node.getKey();
-//
-//        if (subtreeSum <= n && subtreeSum > max) {
-//            max = subtreeSum;
-//            maxSubtree.setRoot(new Node<>(node.getKey()));
-//            maxSubtree.getRoot().setLeft(node.getLeft());
-//            maxSubtree.getRoot().setRight(node.getRight());
-//        }
-//
-//        maxSumSubtree(node.getLeft(), n, maxSubtree);
-//        maxSumSubtree(node.getRight(), n, maxSubtree);
-//    }
-//
-//    private int sumSubtree(Node<Integer> node) {
-//        if (node == null) {
-//            return 0;
-//        }
-//        int left = sumSubtree(node.getLeft());
-//        int right = sumSubtree(node.getRight());
-//        int root = (int) node.getKey();
-//        return left + right + root;
-//    }
-//}
+import java.util.Comparator;
+
+public class IntBST extends BinarySearchTree<Integer> {
+
+    private static class Result {
+        int sum;
+        Node<Integer> subtreeRoot;
+
+        Result(int sum, Node<Integer> subtreeRoot) {
+            this.sum = sum;
+            this.subtreeRoot = subtreeRoot;
+        }
+    }
+
+    public IntBST(Comparator<Integer> comp) {
+        super(comp);
+    }
+
+    public IntBST maxSumSubtree(int n) {  //O(n), space: O(log n) wysokosc drzewa zbalansowanego
+        Result result = maxSumSubtree(root, n);
+        IntBST subtree = new IntBST(getComparator());
+        if (result.subtreeRoot != null) {
+            copySubtree(subtree, result.subtreeRoot);
+        }
+        return subtree;
+    }
+
+    private Result maxSumSubtree(Node<Integer> node, int n) {
+        if (node == null) {
+            return new Result(0, null);
+        }
+
+        Result leftResult = maxSumSubtree(node.getLeft(), n);
+        Result rightResult = maxSumSubtree(node.getRight(), n);
+
+        int currentSum = node.getKey() + leftResult.sum + rightResult.sum;
+
+        if (currentSum < n) {
+            return new Result(currentSum, node);
+        }
+
+        if (leftResult.sum > rightResult.sum && leftResult.sum < n) {
+            return leftResult;
+        } else if (rightResult.sum < n) {
+            return rightResult;
+        } else {
+            return new Result(0, null);
+        }
+    }
+
+    private void copySubtree(IntBST tree, Node<Integer> node) {
+        if (node != null) {
+            tree.insert(node.getKey());
+            copySubtree(tree, node.getLeft());
+            copySubtree(tree, node.getRight());
+        }
+    }
+
+}
