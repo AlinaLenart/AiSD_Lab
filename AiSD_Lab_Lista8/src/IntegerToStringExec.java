@@ -7,7 +7,7 @@ public class IntegerToStringExec implements IExecutor<Integer, String>{
     }
     @Override
     public String getResult(){
-        line.delete(line.length()-2, line.length());
+        line.delete(line.length() - 2, line.length());
         return line.toString();
     }
 }

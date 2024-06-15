@@ -25,17 +25,14 @@ public class BinarySearchTree<T> {
                 current = current.getRight();
         }
 
-        if (parent == null)
+        if (parent == null) {
             this.root = newNode;
-
-        else if (comparator.compare(key, parent.getKey()) < 0)
+        } else if (comparator.compare(key, parent.getKey()) < 0) {
             parent.setLeft(newNode);
-
-        else
+        } else {
             parent.setRight(newNode);
-
+        }
     }
-
 
     public boolean search(T data) {
         return searchRecursive(root, data);
@@ -52,15 +49,13 @@ public class BinarySearchTree<T> {
             return node.getKey() == null || searchRecursive(node.getLeft(), key) || searchRecursive(node.getRight(), key);
         }
 
-        if (key.equals(node.getKey()))
+        if (key.equals(node.getKey())) {
             return true;
-
-        else if (comparator.compare(key, node.getKey()) < 0)
+        } else if (comparator.compare(key, node.getKey()) < 0) {
             return searchRecursive(node.getLeft(), key);
-
-        else
+        } else {
             return searchRecursive(node.getRight(), key);
-
+        }
     }
 
     public T findMin() { //O(h)
@@ -139,7 +134,7 @@ public class BinarySearchTree<T> {
         root = deleteIterative(elem, root);
     }
 
-   private Node<T> deleteIterative(T elem, Node<T> node) {
+    private Node<T> deleteIterative(T elem, Node<T> node) {
         Node<T> current = node; //wierzcholek
         Node<T> previous = null;
 
@@ -172,14 +167,13 @@ public class BinarySearchTree<T> {
         if (current.getLeft() == null || current.getRight() == null) { //ma max 1 dziecko
             Node<T> newCurrent = (current.getLeft() == null) ? current.getRight() : current.getLeft();
 
-            if (previous == null)
+            if (previous == null) {
                 return newCurrent;
-
-            if (previous.getLeft() == current)
+            } else if (previous.getLeft() == current) {
                 previous.setLeft(newCurrent);
-
-            else
+            } else {
                 previous.setRight(newCurrent);
+            }
         }
         else { //ma dwojke dzieci
             Node<T> p = null;
@@ -190,21 +184,14 @@ public class BinarySearchTree<T> {
                 temp = temp.getLeft();
             }
 
-            if (p != null)
+            if (p != null) {
                 p.setLeft(temp.getRight());
-
-            else
+            } else {
                 current.setRight(temp.getRight());
-
+            }
             current.setKey(temp.getKey());
         }
         return node;
-    }
-
-    public Node<T> getRoot() {
-        return root;
-    }public void setRoot(Node<T> newRoot){
-        this.root = newRoot;
     }
 
     public Comparator<T> getComparator() {

@@ -3,7 +3,7 @@ import java.util.Comparator;
 public class Main {
     public static void main(String[] args) {
         testMod();
-        //test1();
+        test1();
     }
 
     private static void testMod(){
@@ -20,7 +20,7 @@ public class Main {
 
         IntBST max = bst.maxSumSubtree(220);
 
-        System.out.println("\nPre-order Traversal:");
+        System.out.println("\nPre-order Traversal of max sum 220:");
         IntegerToStringExec executor = new IntegerToStringExec();
         max.preOrderWalk(executor);
         String traversalResult = executor.getResult();

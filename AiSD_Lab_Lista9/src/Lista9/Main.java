@@ -1,4 +1,4 @@
-package copy;
+package Lista9;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         int t = 3;
         int elements = 50;
-        Comparator<Integer> comparator = Comparator.naturalOrder();
+        var comparator = Comparator.<Integer>naturalOrder();
 
         System.out.println("---Test Sorted---");
         testAdd(comparator, elements, t);
