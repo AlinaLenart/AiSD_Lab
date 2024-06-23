@@ -13,12 +13,10 @@ Welcome to the repository for the Algorithms and Data Structures Laboratory clas
     - [Lab 5: Basic Sorting Algorithms](#lab-5-basic-sorting-algorithms)
     - [Lab 6: Effective Sorting Algorithms](#lab-6-effective-sorting-algorithms)
     - [Lab 7: Heaps and other structures](#lab-7-heaps-and-other-structures)
-    - [Lab 8: Hashing](#lab-8-hashing)
-    - [Lab 9: Dynamic Programming](#lab-9-dynamic-programming)
-    - [Lab 10: Advanced Topics](#lab-10-advanced-topics)
+    - [Lab 8: Tree structure part 1](#lab-8-tree-structure-part-1)
+    - [Lab 9: Tree structure part 2](#lab-9-tree-structure-part-2)
+    - [Lab 10: Graphs](#lab-10-graphs)
 3. [Setup and Installation](#setup-and-installation)
-4. [Contribution Guidelines](#contribution-guidelines)
-5. [License](#license)
 
 ## Introduction
 
@@ -95,32 +93,57 @@ Podczas konstrukcji kopca przekaż podstawową pojemność, a gdy w kopcu nie ma
 ![Screenshot 2024-06-23 at 12 53 24](https://github.com/AlinaLenart/AiSD_Lab/assets/147208016/da72b025-ead2-40ae-a737-3022d3323f37)
 
 
-### Lab 8: Hashing
-- **Description:** Exploration of hashing techniques and hash table implementations.
-- **Topics Covered:** Hash functions, collision resolution strategies (chaining, open addressing), performance analysis.
-- **Files:**
-  - `Lab8_Hashing.ipynb`
-  - `Lab8_Exercises.md`
+### Lab 8: Tree structure part 1
+- **Description:** 
+Zdefiniuj klasę BST<T> implementującą strukturę binarnego drzewa poszukiwań (ang. binary search tree, BST) bez referencji na rodzica.
+Klasa ma definiować następujące operacje:
+• implementacja rekurencyjna:
+    o wyszukania elementu,
+    o znalezienie minimum,
+    o znalezienie maksimum,
+    o przejścia po drzewie w porządku pre-order,
+• implementacja iteracyjna:
+    o znalezienie następnika,
+    o wstawienia elementu,
+    o usunięcia elementu.
+Implementacja operacji przejścia po drzewie ma stosować wzorzec projektowy wizytator (na wykładzie nazwany „egzekutorem”).
+Należy pamiętać, by operacje adekwatnie rozdzielić między klasą drzewa, a klasą węzła. Użytkownik klasy BST<T> nie może uzyskiwać bezpośredniego dostępu do szczegółów implementacyjnych tj. obiektów klasy węzła.
+**Modification**:
+Zdefiniuj klasę IntBST dziedziczącą po BST<Integer> zawierającą metodę IntBST maxSumSubtree(int n), zwracającą poddrzewo, którego suma wartości jest możliwie największa, ale mniejsza od wartości n.
+- **Topics Covered:** Tree structure, iterative and recursive operations, creating subtrees and time complexity of those structures, tree traversal methods.
 
-### Lab 9: Dynamic Programming
-- **Description:** Introduction to dynamic programming and its applications in solving complex problems.
-- **Topics Covered:** Principles of dynamic programming, memoization, common dynamic programming problems (e.g., Fibonacci sequence, knapsack problem).
-- **Files:**
-  - `Lab9_Dynamic_Programming.ipynb`
-  - `Lab9_Exercises.md`
+### Lab 9: Tree structure part 2
+- **Description:** 
+Zdefiniuj klasę BTree<T> implementujące strukturę B-drzewa o następujących cechach:
+• Drzewo może posiadać dowolną wartość minimalnego stopnia węzła t ≥ 2,
+• Każdy węzeł drzewa przechowuje:
+    ▪ uporządkowaną tablicę kluczy,
+    ▪ tablicę dzieci,
+    ▪ aktualną liczbę kluczy/dzieci,
+    ▪ wartość logiczną mówiącą, czy węzeł jest liściem,
+    ▪ jeśli trzeba – wartość parametru t,
+• Klucze należy przeszukiwać przeszukiwaniem binarnym,
+• Drzewo udostępnia operacje:
+    ▪ Wyszukiwanie,
+    ▪ Wstawiania węzła z naprawianiem (omówione na zajęciach),
+    ▪ Usuwanie węzła z naprawianiem (omówione na zajęciach).
+Przyjmij, że wartości null są niepoprawne. W przypadku wstawiania istniejącej wartości nie zmieniaj drzewa, ale poinformuj użytkownika (zgłoszenie wyjątku lub zwrócenie wartości logicznej).
+- **Topics Covered:** Principles of **balanced** tree data structures, b-tree as a good choice for databases
 
-### Lab 10: Advanced Topics
-- **Description:** Exploration of advanced topics in algorithms and data structures.
-- **Topics Covered:** Topics may include but are not limited to, advanced graph algorithms, string matching algorithms, computational geometry.
-- **Files:**
-  - `Lab10_Advanced_Topics.ipynb`
-  - `Lab10_Exercises.md`
+### Lab 10: Graphs
+- **Description:** 
+W kuchni pewnej firmy cateringowej przyszykowana została uczta. Niestety, ktoś zapomniał sprawdzić ile produktów zostało zakupionych przed przygotowaniem i wysłaniem posiłków do klienta, co może oznaczać problemy finansowe podczas rozliczeń podatkowych. Na szczęście, wiadomo jest ile jakich dań przygotowano, znane są dokładne proporcje dane w przepisach oraz wiadomo ile jakich półproduktów zostało po gotowaniu.
+
+Napisz program, który poda ile podstawowych składników zostało zużytych podczas gotowania. Przyjmij, że przepisy są grafami, w których ukazano powiązania między składnikami bazowymi, półproduktami powstałymi w czasie gotowania oraz gotowymi daniami.
+- **Topics Covered:** Graph representation (adjacency matrix), depth-first search (DFS), breadth-first search (BFS), Dijkstra's algorithm.
+- **Additional Files:**
+  - Graph diagram based on my testing examples
 
 ## Setup and Installation
 
 To set up this repository on your local machine, follow these steps:
 
-1. **Clone the repository:**
+**Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/algorithms-data-structures-labs.git
-   cd algorithms-data-structures-labs
+   git clone git@github.com:AlinaLenart/AiSD_Lab.git
+   cd AiSD_Lab
