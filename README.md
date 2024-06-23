@@ -39,7 +39,7 @@ This repository contains the laboratory exercises for a course on Algorithms and
 - **Topics Covered:** Arrays, lists, strings, basic operations such as iterator and generic types.
 
 ### Lab 3: One-Way Lists
-- **Description:** 1. Zaimplementuj i przetestuj klasę OneWayArrayList<E> zgodną z interfejsem IList<E> podanym na wykładzie. Podczas implementacji pomiń metodę iterator().
+- **Description:** Zaimplementuj i przetestuj klasę OneWayArrayList<E> zgodną z interfejsem IList<E> podanym na wykładzie. Podczas implementacji pomiń metodę iterator().
 Podczas sprawdzania poprawności uwzględnij przypadki:
 a. pustej listy, 
 b. listy jednoelementowej,
@@ -49,7 +49,8 @@ Zwróć uwagę, że w opisie powyżej, węzły „zwykłe” i „tablicowe” n
 - **Topics Covered:** one-way lists, exceptions
 
 ### Lab 4: Two-Way Linked Lists
-- **Description:** 1. Zaimplementuj i przetestuj klasę TwoWayLinkedList<E> zgodną z interfejsem IList<E> podanym na wykładzie, reprezentującą listę:
+- **Description:** 
+Zaimplementuj i przetestuj klasę TwoWayLinkedList<E> zgodną z interfejsem IList<E> podanym na wykładzie, reprezentującą listę:
 • dwukierunkową,
 • z głową i ogonem (referencją na ostatni element),
 • bez strażników,
@@ -58,7 +59,8 @@ W implementacji pomiń iteratory.
 - **Topics Covered:** Two-Way Linked Lists, Queue, Stack
 
 ### Lab 5: Basic Sorting Algorithms
-- **Description:** 1. Wykorzystując przygotowaną paczkę kodu zaimplementuj i przetestuj następujące warianty poznanych algorytmów:
+- **Description:** 
+Wykorzystując przygotowaną paczkę kodu zaimplementuj i przetestuj następujące warianty poznanych algorytmów:
 a. Sortowanie przez wstawianie z przeszukiwaniem binarnym (ang. binary search),
 b. Sortowanie przez wybór z jednoczesnym wyszukiwaniem minimum i maksimum,
 c. Sortowanie koktajlowe (ang. Shaker sort) jako modyfikacja sortowania bąbelkowego.
@@ -68,7 +70,8 @@ c. Sortowanie koktajlowe (ang. Shaker sort) jako modyfikacja sortowania bąbelko
   - MS Excel metrics
     
 ### Lab 6: Effective Sorting Algorithms
-- **Description:** 1. Wykorzystując paczkę kodu z listy 5 zaimplementuj i przetestuj następujące warianty poznanych algorytmów:
+- **Description:** 
+Wykorzystując paczkę kodu z listy 5 zaimplementuj i przetestuj następujące warianty poznanych algorytmów:
 a. Sortowanie przez scalanie iteracyjne z kolejką (Wykład 5 slajd 8),
 b. Sortowanie szybkie zoptymalizowane pod kątem list dowiązaniowych:
   i. z wyborem pivota jako pierwszego elementu,
@@ -80,7 +83,8 @@ Algorytmy przetestuj na wariantach kolekcji z poprzedniej listy. Sprawdź, czy i
   - MS Excel metrics
 
 ### Lab 7: Heaps and other structures
-- **Description:** 1. Zdefiniuj klasę implementujące strukturę ternarnego (węzły z trojgiem dzieci) kopca maksymalnego (ang. ternary max-heap) Array3Heap<T> zaimplementowanego na tablicy.
+- **Description:** 
+Zdefiniuj klasę implementujące strukturę ternarnego (węzły z trojgiem dzieci) kopca maksymalnego (ang. ternary max-heap) Array3Heap<T> zaimplementowanego na tablicy.
 Interfejs kopca powinien udostępniać trzy operacje:
 • void clear() – czyszczącą kopiec (usuwającą wszystkie elementy),
 • void add(T element) – wstawiającą nowy element do kopca,
@@ -88,6 +92,8 @@ Interfejs kopca powinien udostępniać trzy operacje:
 Opis budowy kopca opisano na wykładzie 6.
 Podczas konstrukcji kopca przekaż podstawową pojemność, a gdy w kopcu nie ma miejsca, należy rozmiar podwoić. Załóż, że null nie jest poprawną wartością.
 - **Topics Covered:** Searching algorithms, priority queues, minHeap, maxHeap and their basic operations
+![Screenshot 2024-06-23 at 12 53 24](https://github.com/AlinaLenart/AiSD_Lab/assets/147208016/da72b025-ead2-40ae-a737-3022d3323f37)
+
 
 ### Lab 8: Hashing
 - **Description:** Exploration of hashing techniques and hash table implementations.
