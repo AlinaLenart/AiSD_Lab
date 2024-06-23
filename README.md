@@ -12,9 +12,9 @@ Welcome to the repository for the Algorithms and Data Structures Laboratory clas
     - [Lab 4: Two-Way Linked Lists](#lab-4-two-way-linked-lists)
     - [Lab 5: Basic Sorting Algorithms](#lab-5-basic-sorting-algorithms)
     - [Lab 6: Effective Sorting Algorithms](#lab-6-effective-sorting-algorithms)
-    - [Lab 7: Heaps and other structures](#lab-7-heaps-and-other-structures)
-    - [Lab 8: Tree structure part 1](#lab-8-tree-structure-part-1)
-    - [Lab 9: Tree structure part 2](#lab-9-tree-structure-part-2)
+    - [Lab 7: Heaps And Other Structures](#lab-7-heaps-and-other-structures)
+    - [Lab 8: Tree Structure Part 1](#lab-8-tree-structure-part-1)
+    - [Lab 9: Tree Structure Part 2](#lab-9-tree-structure-part-2)
     - [Lab 10: Graphs](#lab-10-graphs)
 3. [Setup and Installation](#setup-and-installation)
 
@@ -80,7 +80,7 @@ Algorytmy przetestuj na wariantach kolekcji z poprzedniej listy. Sprawdź, czy i
   - SortingTester package
   - MS Excel metrics
 
-### Lab 7: Heaps and other structures
+### Lab 7: Heaps And Other Structures
 - **Description:** 
 Zdefiniuj klasę implementujące strukturę ternarnego (węzły z trojgiem dzieci) kopca maksymalnego (ang. ternary max-heap) Array3Heap<T> zaimplementowanego na tablicy.
 Interfejs kopca powinien udostępniać trzy operacje:
@@ -93,7 +93,7 @@ Podczas konstrukcji kopca przekaż podstawową pojemność, a gdy w kopcu nie ma
 ![Screenshot 2024-06-23 at 12 53 24](https://github.com/AlinaLenart/AiSD_Lab/assets/147208016/da72b025-ead2-40ae-a737-3022d3323f37)
 
 
-### Lab 8: Tree structure part 1
+### Lab 8: Tree Structure Part 1
 - **Description:** 
 Zdefiniuj klasę BST<T> implementującą strukturę binarnego drzewa poszukiwań (ang. binary search tree, BST) bez referencji na rodzica.
 Klasa ma definiować następujące operacje:
@@ -112,7 +112,7 @@ Należy pamiętać, by operacje adekwatnie rozdzielić między klasą drzewa, a 
 Zdefiniuj klasę IntBST dziedziczącą po BST<Integer> zawierającą metodę IntBST maxSumSubtree(int n), zwracającą poddrzewo, którego suma wartości jest możliwie największa, ale mniejsza od wartości n.
 - **Topics Covered:** Tree structure, iterative and recursive operations, creating subtrees and time complexity of those structures, tree traversal methods.
 
-### Lab 9: Tree structure part 2
+### Lab 9: Tree Structure Part 2
 - **Description:** 
 Zdefiniuj klasę BTree<T> implementujące strukturę B-drzewa o następujących cechach:
 • Drzewo może posiadać dowolną wartość minimalnego stopnia węzła t ≥ 2,
